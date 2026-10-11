@@ -8,18 +8,10 @@ import { portfolioData } from '../data/portfolioData';
 
 export const ProjectsSection = () => {
   const [selectedProject, setSelectedProject] = useState(null);
-  const [activeFilter, setActiveFilter] = useState('all');
   const { projects } = portfolioData;
 
   const featuredProject = projects.find((p) => p.featured) || projects[0];
-  const secondaryProjects = projects.filter((p) => p.id !== featuredProject.id);
-
-  const filteredSecondary =
-    activeFilter === 'all'
-      ? secondaryProjects
-      : secondaryProjects.filter((p) =>
-          p.category.toLowerCase().includes(activeFilter.toLowerCase())
-        );
+  const otherProjects = projects.filter((p) => p.id !== featuredProject?.id);
 
   return (
     <section id="projects" className="py-24 sm:py-32 relative overflow-hidden">
@@ -28,13 +20,13 @@ export const ProjectsSection = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <SectionHeader
-          badge="PORTFOLIO HIGHLIGHTS"
-          title="Featured Production"
-          highlight="Deployments & Systems."
-          subtitle="A selection of high-concurrency systems, interactive 3D simulations, and web platforms engineered with MERN and WebGL."
+          badge="FEATURED WORK"
+          title="Engineered Systems &"
+          highlight="Web Applications."
+          subtitle="Full-stack applications and production platforms engineered with the MERN stack and modern web architectures."
         />
 
-        {/* 1. Flagship Featured Project Banner */}
+        {/* 1. Flagship Featured Project Banner (Job Connect) */}
         {featuredProject && (
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -42,14 +34,13 @@ export const ProjectsSection = () => {
             viewport={{ once: true }}
             className="mb-16 glass-panel rounded-3xl border border-cyan-500/30 p-8 sm:p-12 relative overflow-hidden group hover:shadow-[0_0_40px_rgba(0,240,255,0.15)] transition-all"
           >
-            {/* Subtle glow accent */}
             <div className="absolute -top-24 -right-24 w-80 h-80 bg-gradient-to-br from-cyan-500/20 to-violet-600/20 rounded-full blur-3xl pointer-events-none" />
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               <div className="lg:col-span-7 space-y-6">
                 <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950/60 border border-cyan-500/40 text-cyan-300 text-xs font-mono">
                   <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
-                  <span>FLAGSHIP SYSTEM // {featuredProject.category}</span>
+                  <span>FLAGSHIP PLATFORM // {featuredProject.category}</span>
                 </div>
 
                 <h3 className="text-3xl sm:text-4xl font-extrabold text-white leading-tight">
@@ -110,21 +101,22 @@ export const ProjectsSection = () => {
                     </a>
                   )}
 
-                  {featuredProject.live && (
+                  {featuredProject.live && featuredProject.live !== '#' && (
                     <a
                       href={featuredProject.live}
                       target="_blank"
                       rel="noreferrer"
-                      className="p-3 rounded-xl glass-panel text-slate-300 hover:text-cyan-400 hover:border-cyan-500/40 transition-all"
+                      className="px-5 py-3 rounded-xl glass-panel text-xs font-mono text-cyan-300 hover:text-white hover:border-cyan-400 transition-all flex items-center gap-2"
                       aria-label="Live Demo"
                     >
+                      <span>Launch Live Portal</span>
                       <ExternalLink className="w-4 h-4" />
                     </a>
                   )}
                 </div>
               </div>
 
-              {/* Graphic Mockup simulation */}
+              {/* Graphic Mockup Simulation */}
               <div className="lg:col-span-5 h-64 sm:h-80 w-full rounded-2xl bg-gradient-to-br from-slate-900 to-slate-950 border border-white/10 p-4 flex flex-col justify-between relative overflow-hidden group-hover:border-cyan-500/30 transition-all">
                 <div className="flex items-center justify-between border-b border-white/5 pb-3">
                   <div className="flex items-center gap-1.5">
@@ -132,7 +124,7 @@ export const ProjectsSection = () => {
                     <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
                     <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/60" />
                   </div>
-                  <span className="text-[10px] font-mono text-slate-500">nexus-cloud.preview.io</span>
+                  <span className="text-[10px] font-mono text-slate-500">job-portal-sw24.onrender.com</span>
                 </div>
 
                 <div className="flex-1 flex items-center justify-center py-6">
@@ -140,119 +132,74 @@ export const ProjectsSection = () => {
                     <div className="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-tr from-cyan-500/20 to-violet-500/30 border border-cyan-400/40 flex items-center justify-center animate-pulse">
                       <Layers className="w-8 h-8 text-cyan-400" />
                     </div>
-                    <div className="text-xs font-mono text-cyan-300">REAL-TIME CLUSTER TELEMETRY</div>
-                    <div className="text-[10px] font-mono text-slate-500">10,000 CONCURRENT NODES</div>
+                    <div className="text-xs font-mono text-cyan-300">JOB CONNECT CAREER ECOSYSTEM</div>
+                    <div className="text-[10px] font-mono text-slate-400">DUAL ROLE RBAC // APPLICANT TRACKING</div>
                   </div>
                 </div>
 
                 <div className="text-right text-[10px] font-mono text-emerald-400">
-                  LATENCY: 42MS // HEALTH: 100%
+                  DEPLOYED ON RENDER // 100% OPERATIONAL
                 </div>
               </div>
             </div>
           </motion.div>
         )}
 
-        {/* 2. Secondary Projects Section */}
-        <div className="flex items-center justify-between mb-8">
-          <h4 className="text-lg font-bold text-white flex items-center gap-2">
-            <span>Additional Architectures & Experiments</span>
-          </h4>
-
-          {/* Filter Pills */}
-          <div className="flex items-center gap-2">
-            {['all', '3D Graphics', 'Backend'].map((filter) => (
-              <button
-                key={filter}
-                onClick={() => setActiveFilter(filter)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-mono capitalize transition-all cursor-pointer ${
-                  activeFilter === filter
-                    ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/40'
-                    : 'text-slate-400 hover:text-white'
-                }`}
+        {/* 2. Additional Projects Grid */}
+        {otherProjects.length > 0 && (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {otherProjects.map((proj, idx) => (
+              <motion.div
+                key={proj.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className="glass-panel rounded-3xl border border-white/5 hover:border-cyan-500/40 p-8 flex flex-col justify-between group hover:shadow-[0_0_30px_rgba(0,240,255,0.1)] transition-all"
               >
-                {filter}
-              </button>
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-[10px] font-mono text-cyan-400 px-3 py-1 rounded-full bg-cyan-950/60 border border-cyan-500/30">
+                      {proj.category}
+                    </span>
+                    <span className="text-xs font-mono text-slate-500">PROJECT</span>
+                  </div>
+
+                  <h4 className="text-2xl font-bold text-white group-hover:text-cyan-300 transition-colors">
+                    {proj.title}
+                  </h4>
+
+                  <p className="text-xs text-cyan-400 font-mono mt-1 mb-3">{proj.tagline}</p>
+
+                  <p className="text-xs sm:text-sm text-slate-400 font-light leading-relaxed line-clamp-3">
+                    {proj.description}
+                  </p>
+                </div>
+
+                <div className="mt-8 pt-6 border-t border-white/5 space-y-4">
+                  <div className="flex flex-wrap gap-1.5">
+                    {proj.tech.map((t, i) => (
+                      <span
+                        key={i}
+                        className="px-2.5 py-1 rounded bg-slate-900 border border-white/5 text-xs font-mono text-slate-300"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+
+                  <button
+                    onClick={() => setSelectedProject(proj)}
+                    className="w-full py-3 rounded-xl glass-panel text-xs font-mono text-cyan-400 hover:text-white hover:border-cyan-500/40 transition-all flex items-center justify-center gap-2 cursor-pointer"
+                  >
+                    <span>INSPECT BLUEPRINT DETAILS</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              </motion.div>
             ))}
           </div>
-        </div>
-
-        {/* Secondary Project Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredSecondary.map((proj, idx) => (
-            <motion.div
-              key={proj.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              className="glass-panel rounded-2xl border border-white/5 hover:border-cyan-500/40 p-6 flex flex-col justify-between group hover:shadow-[0_0_30px_rgba(0,240,255,0.1)] transition-all"
-            >
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-[10px] font-mono text-cyan-400 px-2 py-0.5 rounded-full bg-cyan-950/60 border border-cyan-500/30">
-                    {proj.category}
-                  </span>
-                  <div className="flex items-center gap-2">
-                    {proj.github && (
-                      <a
-                        href={proj.github}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="text-slate-400 hover:text-white transition-colors"
-                        aria-label="GitHub"
-                      >
-                        <GithubIcon className="w-4 h-4" />
-                      </a>
-                    )}
-                    {proj.live && (
-                      <a
-                        href={proj.live}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="text-slate-400 hover:text-cyan-400 transition-colors"
-                        aria-label="Live Demo"
-                      >
-                        <ExternalLink className="w-4 h-4" />
-                      </a>
-                    )}
-                  </div>
-                </div>
-
-                <h4 className="text-xl font-bold text-white group-hover:text-cyan-300 transition-colors">
-                  {proj.title}
-                </h4>
-
-                <p className="text-xs text-cyan-400 font-mono mt-1 mb-3">{proj.tagline}</p>
-
-                <p className="text-xs sm:text-sm text-slate-400 font-light leading-relaxed line-clamp-3">
-                  {proj.description}
-                </p>
-              </div>
-
-              <div className="mt-6 pt-4 border-t border-white/5 space-y-4">
-                <div className="flex flex-wrap gap-1.5">
-                  {proj.tech.map((t, i) => (
-                    <span
-                      key={i}
-                      className="px-2 py-0.5 rounded bg-slate-900 border border-white/5 text-[10px] font-mono text-slate-300"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
-
-                <button
-                  onClick={() => setSelectedProject(proj)}
-                  className="w-full py-2.5 rounded-xl glass-panel text-xs font-mono text-cyan-400 hover:text-white hover:border-cyan-500/40 transition-all flex items-center justify-center gap-1.5 cursor-pointer"
-                >
-                  <span>INSPECT BLUEPRINT</span>
-                  <ArrowUpRight className="w-3.5 h-3.5" />
-                </button>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+        )}
       </div>
 
       {/* Case Study Detail Modal */}

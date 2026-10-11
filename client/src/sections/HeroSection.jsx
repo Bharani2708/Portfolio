@@ -162,7 +162,7 @@ export const HeroSection = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.8, duration: 0.6 }}
         className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer z-20"
-        onClick={() => scrollTo('about')}
+        onClick={() => scrollTo('projects')}
       >
         <span className="text-[10px] font-mono tracking-widest text-slate-500 uppercase">
           SCROLL TO EXPLORE

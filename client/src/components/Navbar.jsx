@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink, Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { useActiveSection } from '../hooks/useActiveSection';
 
 const navItems = [
-  { path: '/', label: 'Home' },
-  { path: '/projects', label: 'Projects' },
-  { path: '/experience', label: 'Experience' },
-  { path: '/skills', label: 'Skills' },
-  { path: '/education', label: 'Education' },
-  { path: '/contact', label: 'Contact' },
+  { id: 'hero', label: 'Home' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'experience', label: 'Experience' },
+  { id: 'skills', label: 'Skills' },
+  { id: 'education', label: 'Education' },
+  { id: 'contact', label: 'Contact' },
 ];
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const location = useLocation();
+  const activeSection = useActiveSection(navItems.map((n) => n.id));
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,10 +25,13 @@ export const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile drawer on route change
-  useEffect(() => {
+  const scrollTo = (id) => {
     setMobileMenuOpen(false);
-  }, [location.pathname]);
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <>
@@ -39,41 +42,38 @@ export const Navbar = () => {
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           {/* Minimalist Monogram Brand Logo */}
-          <Link
-            to="/"
+          <button
+            onClick={() => scrollTo('hero')}
             className="flex items-center group cursor-pointer"
-            aria-label="Home"
+            aria-label="Scroll to Top"
           >
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500/20 to-violet-600/20 border border-cyan-500/40 flex items-center justify-center group-hover:border-cyan-400 group-hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-all">
               <span className="font-mono font-bold text-cyan-400 text-sm tracking-wider">BD</span>
             </div>
-          </Link>
+          </button>
 
-          {/* Desktop Navigation Links */}
+          {/* Desktop Smooth-Scroll Navigation Links */}
           <nav className="hidden md:flex items-center gap-1 px-3 py-1.5 rounded-full glass-nav border border-white/10 shadow-lg">
             {navItems.map((item) => {
-              const isActive =
-                item.path === '/'
-                  ? location.pathname === '/'
-                  : location.pathname.startsWith(item.path);
+              const isActive = activeSection === item.id;
 
               return (
-                <NavLink
-                  key={item.path}
-                  to={item.path}
-                  className={`relative px-4 py-1.5 rounded-full text-xs font-medium tracking-wide transition-colors ${
+                <button
+                  key={item.id}
+                  onClick={() => scrollTo(item.id)}
+                  className={`relative px-4 py-1.5 rounded-full text-xs font-medium tracking-wide transition-colors cursor-pointer ${
                     isActive ? 'text-white' : 'text-slate-400 hover:text-slate-200'
                   }`}
                 >
                   {isActive && (
                     <motion.div
-                      layoutId="activePageIndicator"
+                      layoutId="activeSectionIndicator"
                       className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-500/30 to-violet-500/30 border border-cyan-400/40 shadow-[0_0_12px_rgba(0,240,255,0.25)]"
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}
                   <span className="relative z-10">{item.label}</span>
-                </NavLink>
+                </button>
               );
             })}
           </nav>
@@ -103,23 +103,20 @@ export const Navbar = () => {
           >
             <div className="flex flex-col gap-2">
               {navItems.map((item) => {
-                const isActive =
-                  item.path === '/'
-                    ? location.pathname === '/'
-                    : location.pathname.startsWith(item.path);
+                const isActive = activeSection === item.id;
 
                 return (
-                  <Link
-                    key={item.path}
-                    to={item.path}
-                    className={`text-left px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
+                  <button
+                    key={item.id}
+                    onClick={() => scrollTo(item.id)}
+                    className={`text-left px-4 py-3 rounded-xl text-sm font-medium transition-colors cursor-pointer ${
                       isActive
                         ? 'bg-cyan-500/15 text-cyan-400 border border-cyan-500/30'
                         : 'text-slate-300 hover:bg-white/5'
                     }`}
                   >
                     {item.label}
-                  </Link>
+                  </button>
                 );
               })}
             </div>
@@ -129,3 +126,5 @@ export const Navbar = () => {
     </>
   );
 };
+
+export default Navbar;
