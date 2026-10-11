@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const navItems = [
   { path: '/', label: 'Home' },
@@ -37,22 +37,14 @@ export const Navbar = () => {
         }`}
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          {/* Logo / Monogram */}
+          {/* Minimalist Monogram Brand Logo */}
           <Link
             to="/"
-            className="flex items-center gap-2 group text-left cursor-pointer"
+            className="flex items-center group cursor-pointer"
+            aria-label="Home"
           >
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500/20 to-violet-600/20 border border-cyan-500/40 flex items-center justify-center group-hover:border-cyan-400 group-hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-all">
               <span className="font-mono font-bold text-cyan-400 text-sm tracking-wider">BD</span>
-            </div>
-            <div className="hidden sm:block">
-              <div className="text-sm font-bold tracking-tight text-white group-hover:text-cyan-300 transition-colors">
-                Bharani Dharan
-              </div>
-              <div className="text-[10px] font-mono text-slate-400 flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                <span>ONLINE // READY</span>
-              </div>
             </div>
           </Link>
 
@@ -85,20 +77,11 @@ export const Navbar = () => {
             })}
           </nav>
 
-          {/* Action Button & Mobile Toggle */}
-          <div className="flex items-center gap-3">
-            <Link
-              to="/contact"
-              className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-gradient-to-r from-cyan-500 to-violet-600 text-slate-950 hover:text-white hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-all duration-300 cursor-pointer"
-            >
-              <span>Initialize Contact</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
-            </Link>
-
-            {/* Mobile Menu Button */}
+          {/* Mobile Menu Button */}
+          <div className="md:hidden flex items-center">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2.5 rounded-xl glass-panel text-slate-300 hover:text-white border border-white/10 cursor-pointer"
+              className="p-2.5 rounded-xl glass-panel text-slate-300 hover:text-white border border-white/10 cursor-pointer"
               aria-label="Toggle Navigation Menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -138,14 +121,6 @@ export const Navbar = () => {
                   </Link>
                 );
               })}
-              <div className="pt-4 mt-2 border-t border-white/10 flex flex-col gap-3">
-                <Link
-                  to="/contact"
-                  className="w-full py-3 rounded-xl text-xs font-semibold bg-gradient-to-r from-cyan-500 to-violet-600 text-slate-950 font-mono tracking-wider uppercase text-center"
-                >
-                  Start Collaboration
-                </Link>
-              </div>
             </div>
           </motion.div>
         )}

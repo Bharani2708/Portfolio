@@ -50,7 +50,7 @@ export const HomePage = () => {
                 <h1 className="text-5xl sm:text-7xl xl:text-8xl font-extrabold tracking-tight text-white leading-[1.05]">
                   Bharani{' '}
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-violet-400">
-                    Dharan.
+                    Dharan. M
                   </span>
                 </h1>
 
