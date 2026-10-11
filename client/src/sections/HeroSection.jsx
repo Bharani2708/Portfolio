@@ -48,14 +48,24 @@ export const HeroSection = () => {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="space-y-3"
             >
+              <div className="flex items-center gap-2.5">
+                <span className="text-sm sm:text-base font-mono uppercase tracking-widest text-slate-400">
+                  Hello, I'm
+                </span>
+                <span className="text-2xl sm:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-violet-400 font-mono tracking-tight">
+                  {personal.name}
+                </span>
+              </div>
+
               <h1 className="text-4xl sm:text-6xl xl:text-7xl font-extrabold tracking-tight text-white leading-[1.08]">
                 Building Digital Experiences{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-violet-400">
                   Beyond The Ordinary.
                 </span>
               </h1>
-              <p className="text-lg sm:text-xl font-mono text-slate-300 font-medium">
-                {personal.role}
+              <p className="text-lg sm:text-xl font-mono text-slate-300 font-medium flex items-center gap-2">
+                <span className="text-cyan-400">&gt;</span>
+                <span>{personal.role}</span>
               </p>
             </motion.div>
 
