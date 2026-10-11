@@ -5,9 +5,10 @@ import { Menu, X } from 'lucide-react';
 
 const navItems = [
   { path: '/', label: 'Home' },
-  { path: '/about', label: 'About' },
   { path: '/projects', label: 'Projects' },
   { path: '/experience', label: 'Experience' },
+  { path: '/skills', label: 'Skills' },
+  { path: '/education', label: 'Education' },
   { path: '/contact', label: 'Contact' },
 ];
 

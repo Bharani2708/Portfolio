@@ -8,51 +8,26 @@ import { portfolioData } from '../data/portfolioData';
 
 export const ProjectsPage = () => {
   const [selectedProject, setSelectedProject] = useState(null);
-  const [activeFilter, setActiveFilter] = useState('all');
   const { projects } = portfolioData;
-
-  const categories = ['all', 'Full Stack & 3D', '3D Graphics & Creative Dev', 'Backend Architecture', 'Frontend & UI/UX'];
-
-  const filteredProjects =
-    activeFilter === 'all'
-      ? projects
-      : projects.filter((p) => p.category.toLowerCase().includes(activeFilter.toLowerCase()));
 
   return (
     <div className="pt-28 pb-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          badge="PROJECT CATALOG"
+          badge="FEATURED WORK"
           title="Engineered Systems &"
-          highlight="Creative Deployments."
-          subtitle="Explore the complete index of production architectures, WebGL simulations, and full-stack software systems."
+          highlight="Web Applications."
+          subtitle="Full-stack projects and production systems built with MERN stack, RESTful APIs, and modern responsive interfaces."
         />
 
-        {/* Filter Pills */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-16">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveFilter(cat)}
-              className={`px-4 py-2 rounded-xl text-xs font-mono tracking-wider transition-all cursor-pointer ${
-                activeFilter === cat
-                  ? 'bg-gradient-to-r from-cyan-500 to-violet-600 text-slate-950 font-bold shadow-[0_0_20px_rgba(0,240,255,0.4)]'
-                  : 'glass-panel text-slate-400 hover:text-white'
-              }`}
-            >
-              {cat === 'all' ? `All Deployments (${projects.length})` : cat}
-            </button>
-          ))}
-        </div>
-
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-          {filteredProjects.map((proj, idx) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+          {projects.map((proj, idx) => (
             <motion.div
               key={proj.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.08 }}
+              transition={{ delay: idx * 0.1 }}
               className="glass-panel p-8 rounded-3xl border border-white/10 hover:border-cyan-500/40 hover:shadow-[0_0_35px_rgba(0,240,255,0.12)] transition-all flex flex-col justify-between group"
             >
               <div>
@@ -72,7 +47,7 @@ export const ProjectsPage = () => {
                         <GithubIcon className="w-4 h-4" />
                       </a>
                     )}
-                    {proj.live && (
+                    {proj.live && proj.live !== '#' && (
                       <a
                         href={proj.live}
                         target="_blank"
@@ -148,4 +123,3 @@ export const ProjectsPage = () => {
 };
 
 export default ProjectsPage;
-

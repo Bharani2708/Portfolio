@@ -170,17 +170,36 @@ export const portfolioData = {
 
   education: [
     {
-      degree: "Bachelor of Engineering",
+      degree: "Bachelor of Engineering (B.E.)",
       institution: "Karpagam Academy of Higher Education",
       period: "2022 — 2026",
       grade: "CGPA: 7.6 / 10.0",
+      status: "Pursuing",
       coursework: [
         "Data Structures & Algorithms",
         "Database Management Systems (MongoDB & SQL)",
         "Web Technologies & Component Architecture",
         "Object-Oriented Programming (OOP)",
-        "Software Engineering & Agile Methodologies",
+        "Software Engineering",
       ],
+    },
+    {
+      degree: "Higher Secondary (HSC)",
+      institution: "Saradha Vidhyalaya Matric Higher Secondary School",
+      period: "Completed",
+      grade: "Percentage: 89%",
+      percentage: 89,
+      status: "Completed",
+      coursework: ["Computer Science", "Mathematics", "Physics", "Chemistry"],
+    },
+    {
+      degree: "SSLC (10th)",
+      institution: "Saradha Vidhyalaya Matric Higher Secondary School",
+      period: "Completed",
+      grade: "Percentage: 72%",
+      percentage: 72,
+      status: "Completed",
+      coursework: ["General Curriculum", "Science & Mathematics"],
     },
   ],
 

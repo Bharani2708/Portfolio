@@ -84,11 +84,11 @@ export const HomePage = () => {
                 </Link>
 
                 <Link
-                  to="/about"
+                  to="/experience"
                   className="px-7 py-3.5 rounded-xl glass-panel text-slate-200 hover:text-white border border-white/10 hover:border-cyan-500/40 text-sm font-semibold tracking-wide transition-all duration-300 flex items-center gap-2 cursor-pointer"
                 >
                   <Terminal className="w-4 h-4 text-cyan-400" />
-                  <span>About My Journey</span>
+                  <span>Career Experience</span>
                 </Link>
               </motion.div>
 
