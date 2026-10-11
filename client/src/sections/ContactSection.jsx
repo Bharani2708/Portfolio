@@ -4,7 +4,6 @@ import { Mail, Send, CheckCircle2, AlertCircle, Loader2, MapPin } from 'lucide-r
 import { GithubIcon, LinkedinIcon, TwitterIcon } from '../components/SocialIcons';
 import { SectionHeader } from '../components/SectionHeader';
 import { usePortfolio } from '../context/PortfolioContext';
-import { submitContactForm } from '../services/api';
 
 export const ContactSection = () => {
   const { personal, recordMessage } = usePortfolio();
@@ -48,7 +47,7 @@ export const ContactSection = () => {
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     // Silently block spam bots filling the hidden honeypot
@@ -61,16 +60,16 @@ export const ContactSection = () => {
 
     setStatus({ submitting: true, success: false, error: null });
 
+    // Save directly to frontend storage (viewable in /admin)
     try {
       recordMessage(formData);
-      await submitContactForm(formData);
       setStatus({ submitting: false, success: true, error: null });
       setFormData({ name: '', email: '', subject: '', message: '', honeypot: '' });
     } catch (err) {
       setStatus({
         submitting: false,
         success: false,
-        error: err.message || 'Transmission failed. Direct email channel is active.',
+        error: err.message || 'Unable to store message locally.',
       });
     }
   };

@@ -120,7 +120,7 @@ export const Footer = () => {
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
           <div className="flex items-center gap-1.5 font-mono">
             <Code2 className="w-4 h-4 text-cyan-400" />
-            <span>Built with React 19, Three.js, Express & MongoDB</span>
+            <span>Built with React 19, Three.js, Tailwind CSS & Framer Motion</span>
           </div>
           <div>
             &copy; {currentYear} {personal.name}. All systems secured and encrypted.
