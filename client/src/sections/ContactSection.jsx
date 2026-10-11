@@ -157,10 +157,6 @@ export const ContactSection = () => {
                 </div>
               </div>
             </div>
-
-            <div className="p-6 rounded-2xl bg-cyan-950/30 border border-cyan-500/20 text-xs font-mono text-cyan-300">
-              <span className="font-bold text-white">// SECURITY PROTOCOL:</span> All incoming transmissions are validated and encrypted. Zero telemetry tracking or third-party advertising cookies.
-            </div>
           </div>
 
           {/* Right Column: Interactive Form */}

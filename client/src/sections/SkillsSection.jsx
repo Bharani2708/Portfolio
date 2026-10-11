@@ -1,20 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { SectionHeader } from '../components/SectionHeader';
 import { portfolioData } from '../data/portfolioData';
 
 export const SkillsSection = () => {
-  const [activeCategory, setActiveCategory] = useState('all');
   const { skills } = portfolioData;
 
   const allItems = skills.categories.flatMap((cat) =>
     cat.items.map((item) => ({ ...item, categoryId: cat.id }))
   );
-
-  const displayedItems =
-    activeCategory === 'all'
-      ? allItems
-      : allItems.filter((item) => item.categoryId === activeCategory);
 
   return (
     <section id="skills" className="py-24 sm:py-32 relative bg-cyber-grid">
@@ -29,39 +23,12 @@ export const SkillsSection = () => {
           subtitle="Battle-tested technologies and architectural paradigms utilized across high-availability production environments."
         />
 
-        {/* Category Filter Pills */}
-        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-12">
-          <button
-            onClick={() => setActiveCategory('all')}
-            className={`px-5 py-2 rounded-xl text-xs font-mono tracking-wider uppercase transition-all cursor-pointer ${
-              activeCategory === 'all'
-                ? 'bg-gradient-to-r from-cyan-500 to-violet-600 text-slate-950 font-bold shadow-[0_0_20px_rgba(0,240,255,0.4)]'
-                : 'glass-panel text-slate-400 hover:text-white hover:border-white/20'
-            }`}
-          >
-            All Disciplines ({allItems.length})
-          </button>
-          {skills.categories.map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => setActiveCategory(cat.id)}
-              className={`px-5 py-2 rounded-xl text-xs font-mono tracking-wider uppercase transition-all cursor-pointer ${
-                activeCategory === cat.id
-                  ? 'bg-gradient-to-r from-cyan-500 to-violet-600 text-slate-950 font-bold shadow-[0_0_20px_rgba(0,240,255,0.4)]'
-                  : 'glass-panel text-slate-400 hover:text-white hover:border-white/20'
-              }`}
-            >
-              {cat.name}
-            </button>
-          ))}
-        </div>
-
         {/* Skills Cards Grid */}
         <motion.div
           layout
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-12"
         >
-          {displayedItems.map((item, idx) => (
+          {allItems.map((item, idx) => (
             <motion.div
               layout
               key={item.name}
@@ -92,26 +59,6 @@ export const SkillsSection = () => {
             </motion.div>
           ))}
         </motion.div>
-
-        {/* Soft Skills Badges */}
-        {skills.softSkills && skills.softSkills.length > 0 && (
-          <div className="mt-16 glass-panel p-6 sm:p-8 rounded-3xl border border-white/5 text-center">
-            <h4 className="text-xs font-mono uppercase tracking-wider text-cyan-400 font-semibold mb-6">
-              // Professional & Interpersonal Strengths
-            </h4>
-            <div className="flex flex-wrap items-center justify-center gap-3">
-              {skills.softSkills.map((soft, sIdx) => (
-                <div
-                  key={sIdx}
-                  className="px-5 py-2.5 rounded-xl bg-slate-900/80 border border-cyan-500/30 text-white font-mono text-xs sm:text-sm flex items-center gap-2 hover:border-cyan-400 transition-colors"
-                >
-                  <span className="w-2 h-2 rounded-full bg-cyan-400" />
-                  <span>{soft}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
       </div>
     </section>
   );
