@@ -104,19 +104,11 @@ export const Footer = () => {
             </ul>
           </div>
 
-          {/* Status & Back to Top */}
-          <div className="flex flex-col justify-between items-start md:items-end">
-            <div className="glass-panel p-4 rounded-2xl border border-white/5 w-full md:w-auto">
-              <div className="text-[11px] font-mono text-slate-400 mb-1">NODE RUNTIME STATUS</div>
-              <div className="flex items-center gap-2 text-xs font-medium text-emerald-400">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span>ALL SYSTEMS OPERATIONAL</span>
-              </div>
-            </div>
-
+          {/* Back to Top */}
+          <div className="flex flex-col justify-end items-start md:items-end">
             <button
               onClick={() => scrollTo('hero')}
-              className="mt-6 inline-flex items-center gap-2 px-4 py-2.5 rounded-xl glass-panel text-xs font-mono text-cyan-400 hover:text-white hover:border-cyan-400/50 transition-all cursor-pointer group"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl glass-panel text-xs font-mono text-cyan-400 hover:text-white hover:border-cyan-400/50 transition-all cursor-pointer group"
             >
               <span>RETURN TO APEX</span>
               <ArrowUp className="w-3.5 h-3.5 group-hover:-translate-y-1 transition-transform" />
