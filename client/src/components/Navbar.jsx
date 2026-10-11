@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { useActiveSection } from '../hooks/useActiveSection';
@@ -13,6 +14,7 @@ const navItems = [
 ];
 
 export const Navbar = () => {
+  const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const activeSection = useActiveSection(navItems.map((n) => n.id));
@@ -24,6 +26,18 @@ export const Navbar = () => {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Secret admin shortcut: Ctrl + Shift + A
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key.toLowerCase() === 'a') {
+        e.preventDefault();
+        navigate('/admin');
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [navigate]);
 
   const scrollTo = (id) => {
     setMobileMenuOpen(false);
@@ -41,10 +55,12 @@ export const Navbar = () => {
         }`}
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          {/* Minimalist Monogram Brand Logo */}
+          {/* Minimalist Monogram Brand Logo (Double-click to open Admin console) */}
           <button
             onClick={() => scrollTo('hero')}
+            onDoubleClick={() => navigate('/admin')}
             className="flex items-center group cursor-pointer"
+            title="Double-click to access Admin console"
             aria-label="Scroll to Top"
           >
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500/20 to-violet-600/20 border border-cyan-500/40 flex items-center justify-center group-hover:border-cyan-400 group-hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-all">
