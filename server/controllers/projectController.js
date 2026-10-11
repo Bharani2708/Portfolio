@@ -138,3 +138,4 @@ export const getProjectBySlug = async (req, res, next) => {
     next(error);
   }
 };
+

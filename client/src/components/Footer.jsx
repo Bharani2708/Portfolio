@@ -1,7 +1,16 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowUp, Mail, Code2 } from 'lucide-react';
 import { GithubIcon, LinkedinIcon, TwitterIcon } from './SocialIcons';
 import { portfolioData } from '../data/portfolioData';
+
+const navLinks = [
+  { path: '/', label: 'Home' },
+  { path: '/about', label: 'About' },
+  { path: '/projects', label: 'Projects' },
+  { path: '/experience', label: 'Experience' },
+  { path: '/contact', label: 'Contact' },
+];
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -21,12 +30,12 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-white/5">
           {/* Identity Column */}
           <div className="md:col-span-2 space-y-4">
-            <div className="flex items-center gap-3">
+            <Link to="/" className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500/20 to-violet-600/20 border border-cyan-500/40 flex items-center justify-center">
                 <span className="font-mono font-bold text-cyan-400 text-sm">AV</span>
               </div>
               <span className="text-xl font-bold tracking-tight text-white">{personal.name}</span>
-            </div>
+            </Link>
             <p className="text-sm text-slate-400 max-w-md font-light leading-relaxed">
               {personal.tagline}. Dedicated to engineering high-availability systems with immersive WebGL graphics and modern design systems.
             </p>
@@ -58,33 +67,30 @@ export const Footer = () => {
               >
                 <TwitterIcon className="w-4 h-4" />
               </a>
-              <a
-                href={`mailto:${personal.socials.email}`}
+              <Link
+                to="/contact"
                 className="p-2.5 rounded-xl glass-panel text-slate-400 hover:text-cyan-400 hover:border-cyan-500/40 transition-colors"
-                aria-label="Email"
+                aria-label="Contact"
               >
                 <Mail className="w-4 h-4" />
-              </a>
+              </Link>
             </div>
           </div>
 
-          {/* Quick Navigation */}
+          {/* Quick Navigation Pages */}
           <div>
             <h4 className="text-xs font-mono uppercase tracking-wider text-slate-300 font-semibold mb-4">
               System Coordinates
             </h4>
             <ul className="space-y-2 text-sm">
-              {['about', 'skills', 'projects', 'experience', 'education', 'contact'].map((item) => (
-                <li key={item}>
-                  <button
-                    onClick={() => {
-                      const el = document.getElementById(item);
-                      if (el) el.scrollIntoView({ behavior: 'smooth' });
-                    }}
-                    className="text-slate-400 hover:text-cyan-400 capitalize transition-colors cursor-pointer"
+              {navLinks.map((item) => (
+                <li key={item.path}>
+                  <Link
+                    to={item.path}
+                    className="text-slate-400 hover:text-cyan-400 transition-colors cursor-pointer"
                   >
-                    {item}
-                  </button>
+                    {item.label}
+                  </Link>
                 </li>
               ))}
             </ul>

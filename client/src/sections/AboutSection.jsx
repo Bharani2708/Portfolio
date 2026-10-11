@@ -141,3 +141,4 @@ export const AboutSection = () => {
     </section>
   );
 };
+

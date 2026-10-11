@@ -58,3 +58,4 @@ export const SectionHeader = ({ badge, title, highlight, subtitle, align = 'cent
     </div>
   );
 };
+

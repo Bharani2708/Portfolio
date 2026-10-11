@@ -45,3 +45,4 @@ export const TwitterIcon = ({ className = 'w-4 h-4' }) => (
     <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
   </svg>
 );
+

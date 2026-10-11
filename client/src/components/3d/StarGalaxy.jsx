@@ -64,3 +64,4 @@ export const StarGalaxy = ({ count = 1200 }) => {
     </points>
   );
 };
+

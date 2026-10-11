@@ -35,3 +35,4 @@ const educationSchema = new mongoose.Schema(
 );
 
 export const Education = mongoose.models.Education || mongoose.model('Education', educationSchema);
+

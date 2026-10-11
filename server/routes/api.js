@@ -31,3 +31,4 @@ router.get('/education', getEducation);
 router.post('/contact', contactRateLimiter, handleContactSubmit);
 
 export default router;
+

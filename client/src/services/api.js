@@ -46,3 +46,4 @@ export const submitContactForm = async (formData) => {
     throw new Error(message);
   }
 };
+

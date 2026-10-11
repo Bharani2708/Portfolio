@@ -131,3 +131,4 @@ To update all personal information, bio, skills, projects, and contact links:
    * `CLIENT_URL`: Your deployed frontend URL (e.g. `https://your-portfolio.vercel.app`)
    * `MONGODB_URI`: Your MongoDB Atlas connection string
    * `EMAIL_USER` / `EMAIL_PASS` / `EMAIL_TO`: Your email credentials
+

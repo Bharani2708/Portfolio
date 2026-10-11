@@ -33,3 +33,4 @@ export const getEducation = async (req, res, next) => {
     next(error);
   }
 };
+
