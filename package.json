@@ -1,0 +1,24 @@
+{
+  "name": "futuristic-3d-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Premium Futuristic 3D Developer Portfolio built with MERN stack, Three.js, React Three Fiber, Tailwind CSS, and Framer Motion",
+  "scripts": {
+    "client": "npm --prefix client run dev",
+    "server": "npm --prefix server run dev",
+    "build": "npm --prefix client run build",
+    "start": "npm --prefix server run start"
+  },
+  "keywords": [
+    "react",
+    "threejs",
+    "r3f",
+    "tailwind",
+    "express",
+    "mongodb",
+    "mern",
+    "portfolio"
+  ],
+  "author": "Alex Vance",
+  "license": "MIT"
+}

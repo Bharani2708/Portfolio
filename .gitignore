@@ -1,0 +1,26 @@
+# Dependency caches
+node_modules/
+*/node_modules/
+
+# Production builds
+dist/
+build/
+client/dist/
+
+# Environment configurations (Keep confidential)
+.env
+.env.local
+.env.production
+server/.env
+
+# Logs and debug files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# Editor & OS artifacts
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
