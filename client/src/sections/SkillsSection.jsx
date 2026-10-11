@@ -92,6 +92,26 @@ export const SkillsSection = () => {
             </motion.div>
           ))}
         </motion.div>
+
+        {/* Soft Skills Badges */}
+        {skills.softSkills && skills.softSkills.length > 0 && (
+          <div className="mt-16 glass-panel p-6 sm:p-8 rounded-3xl border border-white/5 text-center">
+            <h4 className="text-xs font-mono uppercase tracking-wider text-cyan-400 font-semibold mb-6">
+              // Professional & Interpersonal Strengths
+            </h4>
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              {skills.softSkills.map((soft, sIdx) => (
+                <div
+                  key={sIdx}
+                  className="px-5 py-2.5 rounded-xl bg-slate-900/80 border border-cyan-500/30 text-white font-mono text-xs sm:text-sm flex items-center gap-2 hover:border-cyan-400 transition-colors"
+                >
+                  <span className="w-2 h-2 rounded-full bg-cyan-400" />
+                  <span>{soft}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

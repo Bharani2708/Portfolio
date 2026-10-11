@@ -32,7 +32,7 @@ export const Footer = () => {
           <div className="md:col-span-2 space-y-4">
             <Link to="/" className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500/20 to-violet-600/20 border border-cyan-500/40 flex items-center justify-center">
-                <span className="font-mono font-bold text-cyan-400 text-sm">AV</span>
+                <span className="font-mono font-bold text-cyan-400 text-sm">BD</span>
               </div>
               <span className="text-xl font-bold tracking-tight text-white">{personal.name}</span>
             </Link>

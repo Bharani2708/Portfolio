@@ -43,11 +43,11 @@ export const Navbar = () => {
             className="flex items-center gap-2 group text-left cursor-pointer"
           >
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500/20 to-violet-600/20 border border-cyan-500/40 flex items-center justify-center group-hover:border-cyan-400 group-hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-all">
-              <span className="font-mono font-bold text-cyan-400 text-sm tracking-wider">AV</span>
+              <span className="font-mono font-bold text-cyan-400 text-sm tracking-wider">BD</span>
             </div>
             <div className="hidden sm:block">
               <div className="text-sm font-bold tracking-tight text-white group-hover:text-cyan-300 transition-colors">
-                Alex Vance
+                Bharani Dharan
               </div>
               <div className="text-[10px] font-mono text-slate-400 flex items-center gap-1.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />

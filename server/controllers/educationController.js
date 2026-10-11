@@ -3,15 +3,15 @@ import { Education } from '../models/Education.js';
 
 const fallbackEducation = [
   {
-    degree: 'Bachelor of Science in Computer Science & Engineering',
-    institution: 'State University of Technology',
-    period: '2021 — 2025',
-    grade: "CGPA: 3.85 / 4.0 (Dean's Honor Roll)",
+    degree: 'Bachelor of Engineering',
+    institution: 'Karpagam Academy of Higher Education',
+    period: '2022 — 2026',
+    grade: 'CGPA: 7.6 / 10.0',
     coursework: [
-      'Advanced Data Structures & Algorithms',
-      'Database Management Systems (RDBMS & NoSQL)',
-      'Distributed Computing & Cloud Architecture',
-      'Computer Graphics & Interactive Systems',
+      'Data Structures & Algorithms',
+      'Database Management Systems (MongoDB & SQL)',
+      'Web Technologies & Component Architecture',
+      'Object-Oriented Programming (OOP)',
       'Software Engineering & Agile Methodologies',
     ],
   },
