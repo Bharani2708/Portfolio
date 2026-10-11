@@ -3,10 +3,10 @@ import { motion } from 'framer-motion';
 import { ArrowDown, ArrowUpRight, FileText, Mail } from 'lucide-react';
 import { GithubIcon, LinkedinIcon, TwitterIcon } from '../components/SocialIcons';
 import { HeroCanvas } from '../components/3d/HeroCanvas';
-import { portfolioData } from '../data/portfolioData';
+import { usePortfolio } from '../context/PortfolioContext';
 
 export const HeroSection = () => {
-  const { personal } = portfolioData;
+  const { personal } = usePortfolio();
 
   const scrollTo = (id) => {
     const el = document.getElementById(id);

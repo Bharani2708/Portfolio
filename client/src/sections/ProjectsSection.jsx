@@ -4,11 +4,11 @@ import { ExternalLink, Layers, ArrowUpRight, Sparkles } from 'lucide-react';
 import { GithubIcon } from '../components/SocialIcons';
 import { SectionHeader } from '../components/SectionHeader';
 import { ProjectModal } from '../components/ProjectModal';
-import { portfolioData } from '../data/portfolioData';
+import { usePortfolio } from '../context/PortfolioContext';
 
 export const ProjectsSection = () => {
   const [selectedProject, setSelectedProject] = useState(null);
-  const { projects } = portfolioData;
+  const { projects } = usePortfolio();
 
   const featuredProject = projects.find((p) => p.featured) || projects[0];
   const otherProjects = projects.filter((p) => p.id !== featuredProject?.id);

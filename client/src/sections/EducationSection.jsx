@@ -2,10 +2,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { GraduationCap, Calendar, Award } from 'lucide-react';
 import { SectionHeader } from '../components/SectionHeader';
-import { portfolioData } from '../data/portfolioData';
+import { usePortfolio } from '../context/PortfolioContext';
 
 export const EducationSection = () => {
-  const { education } = portfolioData;
+  const { education } = usePortfolio();
 
   return (
     <section id="education" className="py-24 sm:py-32 relative overflow-hidden bg-cyber-grid">

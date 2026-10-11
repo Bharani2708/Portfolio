@@ -2,10 +2,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Briefcase, Calendar, MapPin, CheckCircle2 } from 'lucide-react';
 import { SectionHeader } from '../components/SectionHeader';
-import { portfolioData } from '../data/portfolioData';
+import { usePortfolio } from '../context/PortfolioContext';
 
 export const ExperienceSection = () => {
-  const { experience } = portfolioData;
+  const { experience } = usePortfolio();
 
   return (
     <section id="experience" className="py-24 sm:py-32 relative bg-cyber-grid">

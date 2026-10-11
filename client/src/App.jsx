@@ -1,4 +1,6 @@
 import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { PortfolioProvider } from './context/PortfolioContext';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 
@@ -8,8 +10,10 @@ import { ExperienceSection } from './sections/ExperienceSection';
 import { SkillsSection } from './sections/SkillsSection';
 import { EducationSection } from './sections/EducationSection';
 import { ContactSection } from './sections/ContactSection';
+import { AdminPage } from './pages/AdminPage';
 
-export function App() {
+// Public Single-Page Smooth Scrolling Flow
+const SinglePagePortfolio = () => {
   return (
     <div className="relative min-h-screen bg-[#030712] text-slate-100 flex flex-col selection:bg-cyan-500/25 selection:text-cyan-200">
       {/* Floating Glass Navigation Header with Scroll Spy */}
@@ -26,7 +30,7 @@ export function App() {
         {/* 3. Professional Experience & Internships */}
         <ExperienceSection />
 
-        {/* 4. Technical & Soft Skills */}
+        {/* 4. Technical Skills */}
         <SkillsSection />
 
         {/* 5. Education & Schooling Credentials */}
@@ -39,6 +43,20 @@ export function App() {
       {/* Futuristic Cyber Footer */}
       <Footer />
     </div>
+  );
+};
+
+export function App() {
+  return (
+    <PortfolioProvider>
+      <Routes>
+        {/* Secret Admin Route */}
+        <Route path="/admin" element={<AdminPage />} />
+
+        {/* Default Public Portfolio */}
+        <Route path="*" element={<SinglePagePortfolio />} />
+      </Routes>
+    </PortfolioProvider>
   );
 }
 

@@ -1,10 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { SectionHeader } from '../components/SectionHeader';
-import { portfolioData } from '../data/portfolioData';
+import { usePortfolio } from '../context/PortfolioContext';
 
 export const SkillsSection = () => {
-  const { skills } = portfolioData;
+  const { skills } = usePortfolio();
 
   const allItems = skills.categories.flatMap((cat) =>
     cat.items.map((item) => ({ ...item, categoryId: cat.id }))

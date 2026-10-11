@@ -3,11 +3,11 @@ import { motion } from 'framer-motion';
 import { Mail, Send, CheckCircle2, AlertCircle, Loader2, MapPin } from 'lucide-react';
 import { GithubIcon, LinkedinIcon, TwitterIcon } from '../components/SocialIcons';
 import { SectionHeader } from '../components/SectionHeader';
-import { portfolioData } from '../data/portfolioData';
+import { usePortfolio } from '../context/PortfolioContext';
 import { submitContactForm } from '../services/api';
 
 export const ContactSection = () => {
-  const { personal } = portfolioData;
+  const { personal, recordMessage } = usePortfolio();
 
   const [formData, setFormData] = useState({
     name: '',
@@ -62,6 +62,7 @@ export const ContactSection = () => {
     setStatus({ submitting: true, success: false, error: null });
 
     try {
+      recordMessage(formData);
       await submitContactForm(formData);
       setStatus({ submitting: false, success: true, error: null });
       setFormData({ name: '', email: '', subject: '', message: '', honeypot: '' });
