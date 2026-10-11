@@ -273,29 +273,15 @@ export const AdminPage = () => {
             </button>
           </form>
 
-          {/* Quick Info & Default Password Hint */}
-          <div className="mt-6 pt-5 border-t border-white/5 text-center space-y-3">
-            <div className="text-[11px] font-mono text-slate-500">
-              Default password:{' '}
-              <button
-                type="button"
-                onClick={() => setPasswordInput('bharani@admin')}
-                className="text-cyan-400 underline underline-offset-2 hover:text-cyan-300 cursor-pointer"
-              >
-                bharani@admin
-              </button>{' '}
-              <span className="text-slate-600">(Click to auto-fill)</span>
-            </div>
-
-            <div>
-              <Link
-                to="/"
-                className="inline-flex items-center gap-1.5 text-xs font-mono text-slate-400 hover:text-cyan-300 transition-colors"
-              >
-                <ArrowLeft className="w-3.5 h-3.5" />
-                <span>Return to Portfolio</span>
-              </Link>
-            </div>
+          {/* Return link */}
+          <div className="mt-6 pt-5 border-t border-white/5 text-center">
+            <Link
+              to="/"
+              className="inline-flex items-center gap-1.5 text-xs font-mono text-slate-400 hover:text-cyan-300 transition-colors"
+            >
+              <ArrowLeft className="w-3.5 h-3.5" />
+              <span>Return to Portfolio</span>
+            </Link>
           </div>
         </motion.div>
       </div>

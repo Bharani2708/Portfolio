@@ -17,8 +17,8 @@ async function hashPassword(plainText) {
   return hashArray.map((b) => b.toString(16).padStart(2, '0')).join('');
 }
 
-// Default fallback password: 'admin' or 'bharani@admin'
-const DEFAULT_PASS = 'bharani@admin';
+// Default password
+const DEFAULT_PASS = 'admin@bharani';
 
 export const PortfolioProvider = ({ children }) => {
   // 1. Data state (starts with initial portfolioData, overrides with localStorage)
@@ -79,23 +79,20 @@ export const PortfolioProvider = ({ children }) => {
   // Admin Login
   const login = async (passwordInput) => {
     try {
+      // Direct match for default password
+      if (passwordInput === DEFAULT_PASS) {
+        sessionStorage.setItem(STORAGE_KEY_AUTH, 'true');
+        setIsAuthenticated(true);
+        return { success: true };
+      }
+
       const customHash = localStorage.getItem(STORAGE_KEY_PASS);
       const inputHash = await hashPassword(passwordInput);
 
-      if (customHash) {
-        if (inputHash === customHash) {
-          sessionStorage.setItem(STORAGE_KEY_AUTH, 'true');
-          setIsAuthenticated(true);
-          return { success: true };
-        }
-      } else {
-        // Check default password
-        const defaultHash = await hashPassword(DEFAULT_PASS);
-        if (inputHash === defaultHash || passwordInput === DEFAULT_PASS) {
-          sessionStorage.setItem(STORAGE_KEY_AUTH, 'true');
-          setIsAuthenticated(true);
-          return { success: true };
-        }
+      if (customHash && inputHash === customHash) {
+        sessionStorage.setItem(STORAGE_KEY_AUTH, 'true');
+        setIsAuthenticated(true);
+        return { success: true };
       }
 
       return { success: false, message: 'Invalid Admin Clearance Code / Password' };
