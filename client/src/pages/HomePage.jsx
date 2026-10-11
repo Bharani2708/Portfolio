@@ -41,26 +41,22 @@ export const HomePage = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="space-y-3"
+                className="space-y-4"
               >
-                <div className="flex items-center gap-2.5">
-                  <span className="text-sm sm:text-base font-mono uppercase tracking-widest text-slate-400">
-                    Hello, I'm
-                  </span>
-                  <span className="text-2xl sm:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-violet-400 font-mono tracking-tight">
-                    {personal.name}
-                  </span>
+                <div className="text-xs sm:text-sm font-mono text-cyan-400 tracking-widest uppercase">
+                  // FULL STACK DEVELOPER & MERN ENGINEER
                 </div>
 
-                <h1 className="text-4xl sm:text-6xl xl:text-7xl font-extrabold tracking-tight text-white leading-[1.08]">
-                  Building Digital Experiences{' '}
+                <h1 className="text-5xl sm:text-7xl xl:text-8xl font-extrabold tracking-tight text-white leading-[1.05]">
+                  Bharani{' '}
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-violet-400">
-                    Beyond The Ordinary.
+                    Dharan.
                   </span>
                 </h1>
-                <p className="text-lg sm:text-xl font-mono text-slate-300 font-medium flex items-center gap-2">
-                  <span className="text-cyan-400">&gt;</span>
-                  <span>{personal.role}</span>
+
+                <p className="text-lg sm:text-2xl font-mono text-slate-300 font-medium">
+                  Building Digital Experiences{' '}
+                  <span className="text-cyan-300">Beyond The Ordinary.</span>
                 </p>
               </motion.div>
 
